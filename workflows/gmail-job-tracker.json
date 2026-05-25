@@ -1,0 +1,53 @@
+{
+  "name": "📧 Gmail Job Tracker",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "filters": {
+          "readStatus": "unread",
+          "labelIds": ["INBOX"]
+        },
+        "options": {}
+      },
+      "id": "gmail-trigger-001",
+      "name": "Gmail Trigger",
+      "type": "n8n-nodes-base.gmailTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "REPLACE_WITH_CREDENTIAL_ID",
+          "name": "Gmail account"
+        }
+      }
+    }
+  ],
+  "connections": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": "REPLACE_WITH_YOUR_N8N_INSTANCE_ID"
+  },
+  "pinData": {},
+  "triggerCount": 1,
+  "updatedAt": "2026-05-25T10:30:00.000Z",
+  "createdAt": "2026-05-25T09:00:00.000Z",
+  "_comment": "Gmail Job Tracker - monitors inbox for job-related emails. Extend this workflow by adding: IF node (filter for job keywords), Google Sheets node (log applications), Telegram node (notify you of new job emails). See README.md for full setup instructions.",
+  "_extension_ideas": {
+    "step1": "Add IF node: check if email subject contains keywords like 'job', 'opportunity', 'interview', 'offer'",
+    "step2": "Add Google Sheets node: log job emails to a spreadsheet (Date, From, Subject, Snippet)",
+    "step3": "Add Telegram node: send notification to your Telegram when a job email arrives",
+    "step4": "Add Gmail node: auto-label job emails with a 'Job Applications' label",
+    "step5": "Add AI Agent: summarize job email content and extract key details"
+  }
+}
